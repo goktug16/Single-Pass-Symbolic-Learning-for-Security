@@ -39,10 +39,10 @@ def aggregate_embeddings(data, labels, hypervectors, D=1024, window_size=3):
                 else:  # Benign
                     benign_aggregated_embd += hypervector
 
-    # binarized_malware = np.where(malware_aggregated_embd >= 1, 1, -1)
-    # binarized_benign = np.where(benign_aggregated_embd >= 1, 1, -1)
-    # return binarized_malware, binarized_benign
-    return malware_aggregated_embd, benign_aggregated_embd
+    binarized_malware = np.where(malware_aggregated_embd >= 1, 1, -1)
+    binarized_benign = np.where(benign_aggregated_embd >= 1, 1, -1)
+    return binarized_malware, binarized_benign
+    # return malware_aggregated_embd, benign_aggregated_embd
 
 def predict_sentiment_optimized(test_data, malware_vector, benign_vector, hypervectors, D=1024, window_size=3):
     """
